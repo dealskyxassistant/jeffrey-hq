@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Nav from "@/components/Nav";
 import Link from "next/link";
 
@@ -251,6 +251,21 @@ export default function DashboardPage() {
     await loadData();
   }
 
+  const [quickModal, setQuickModal] = useState<{ title: string; placeholder: string } | null>(null);
+  const [quickTask, setQuickTask] = useState("");
+  const modalRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (quickModal && modalRef.current) modalRef.current.focus();
+  }, [quickModal]);
+
+  const QUICK_ACTIONS = [
+    { icon: "🔍", label: "50 Leads recherchieren", placeholder: "Beschreibe die Zielgruppe: Branche, Standort, Unternehmensgröße, Kriterien..." },
+    { icon: "✍️", label: "Outreach Copy erstellen", placeholder: "Beschreibe den Context: Produkt, Zielgruppe, Ton, gewünschte CTA..." },
+    { icon: "💻", label: "Coding Task", placeholder: "Beschreibe den Coding-Task: Was soll gebaut / gefixt / gereviewed werden?" },
+    { icon: "🔬", label: "Market Research", placeholder: "Beschreibe das Research-Thema: Markt, Wettbewerber, Fragen, Tiefe..." },
+  ];
+
   const cronJobs = [
     { name: "Lead Batch Scraper", agent: "Leads 🔍", cadence: "Täglich 09:00", next: "Morgen 09:00 Uhr", status: "active" },
     { name: "Outreach Email Blast", agent: "Copy ✍️", cadence: "Mo + Do 10:00", next: "Mo 10:00 Uhr", status: "active" },
@@ -321,6 +336,66 @@ export default function DashboardPage() {
             </div>
           )}
         </section>
+
+        {/* Quick Actions Section */}
+        <section className="mb-12">
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Quick Actions</h2>
+            <span className="text-xs text-gray-400 dark:text-gray-600">Startet sofort einen Agent-Task</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {QUICK_ACTIONS.map((action) => (
+              <button
+                key={action.label}
+                onClick={() => { setQuickTask(""); setQuickModal({ title: action.label, placeholder: action.placeholder }); }}
+                className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all text-left group"
+              >
+                <div className="text-2xl mb-3 group-hover:scale-110 transition-transform">{action.icon}</div>
+                <div className="text-sm font-medium text-gray-900 dark:text-white leading-tight">{action.label}</div>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Quick Action Modal */}
+        {quickModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setQuickModal(null)} />
+            <div className="relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-2xl w-full max-w-lg p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-gray-900 dark:text-white text-lg">{quickModal.title}</h3>
+                <button onClick={() => setQuickModal(null)} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xl leading-none">×</button>
+              </div>
+              <textarea
+                ref={modalRef}
+                value={quickTask}
+                onChange={(e) => setQuickTask(e.target.value)}
+                placeholder={quickModal.placeholder}
+                rows={5}
+                className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 resize-none"
+              />
+              <div className="flex gap-3 mt-4">
+                <button
+                  onClick={() => setQuickModal(null)}
+                  className="flex-1 text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 px-4 py-2.5 rounded-xl transition-colors"
+                >
+                  Abbrechen
+                </button>
+                <button
+                  onClick={() => {
+                    // TODO: Wire to API
+                    alert(`Task gesendet:\n\n${quickTask}`);
+                    setQuickModal(null);
+                  }}
+                  disabled={!quickTask.trim()}
+                  className="flex-1 text-sm font-medium bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white px-4 py-2.5 rounded-xl transition-colors disabled:cursor-not-allowed"
+                >
+                  ▶ Task starten
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Cron Jobs Section */}
         <section>

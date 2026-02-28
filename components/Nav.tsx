@@ -38,6 +38,7 @@ export default function Nav() {
   const navItems: NavItem[] = [
     { href: "/", label: "Dashboard", icon: "⬡" },
     { href: "/agents", label: "Agenten", icon: "◈" },
+    { href: "/pipeline", label: "Pipeline", icon: "🔗" },
     { href: "/jobs", label: "Jobs", icon: "🎯" },
     { href: "/inbox", label: "Inbox", icon: "📬", badge: newCount || undefined },
     { href: "/costs", label: "Costs", icon: "💰" },
@@ -90,6 +91,12 @@ export default function Nav() {
             })}
           </div>
 
+            {/* Analytics - Soon */}
+            <span className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-400 dark:text-gray-600 cursor-not-allowed whitespace-nowrap">
+              <span className="text-xs">📊</span>
+              <span className="hidden sm:block">Analytics</span>
+              <span className="hidden sm:block text-[9px] bg-indigo-100 dark:bg-indigo-900/40 text-indigo-500 dark:text-indigo-400 px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wide">Soon</span>
+            </span>
           {/* Right: Theme Toggle + Logout */}
           <div className="flex items-center gap-1 flex-shrink-0">
             <button
