@@ -43,6 +43,7 @@ export default function Nav() {
     { href: "/inbox", label: "Inbox", icon: "📬", badge: newCount || undefined },
     { href: "/costs", label: "Costs", icon: "💰" },
     { href: "/tasks", label: "Tasks", icon: "◫" },
+    { href: "/leads", label: "Leads CSV", icon: "📋" },
   ];
 
   async function handleLogout() {
