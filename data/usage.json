@@ -1,0 +1,144 @@
+{
+  "daily": [
+    {
+      "date": "2026-02-15",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 32000, "outputTokens": 6500},
+        "leads": {"model": "gpt-4o", "inputTokens": 85000, "outputTokens": 10000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 18000, "outputTokens": 8000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 55000, "outputTokens": 18000},
+        "research": {"model": "gpt-4o", "inputTokens": 40000, "outputTokens": 12000}
+      }
+    },
+    {
+      "date": "2026-02-16",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 28000, "outputTokens": 5500},
+        "leads": {"model": "gpt-4o", "inputTokens": 92000, "outputTokens": 11500},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 22000, "outputTokens": 9500},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 0, "outputTokens": 0},
+        "research": {"model": "gpt-4o", "inputTokens": 0, "outputTokens": 0}
+      }
+    },
+    {
+      "date": "2026-02-17",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 41000, "outputTokens": 9000},
+        "leads": {"model": "gpt-4o", "inputTokens": 110000, "outputTokens": 14000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 28000, "outputTokens": 11000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 70000, "outputTokens": 22000},
+        "research": {"model": "gpt-4o", "inputTokens": 55000, "outputTokens": 16000}
+      }
+    },
+    {
+      "date": "2026-02-18",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 25000, "outputTokens": 4500},
+        "leads": {"model": "gpt-4o", "inputTokens": 78000, "outputTokens": 9000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 0, "outputTokens": 0},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 45000, "outputTokens": 15000},
+        "research": {"model": "gpt-4o", "inputTokens": 0, "outputTokens": 0}
+      }
+    },
+    {
+      "date": "2026-02-19",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 38000, "outputTokens": 7500},
+        "leads": {"model": "gpt-4o", "inputTokens": 130000, "outputTokens": 17000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 35000, "outputTokens": 14000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 90000, "outputTokens": 28000},
+        "research": {"model": "gpt-4o", "inputTokens": 70000, "outputTokens": 20000}
+      }
+    },
+    {
+      "date": "2026-02-20",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 52000, "outputTokens": 11000},
+        "leads": {"model": "gpt-4o", "inputTokens": 145000, "outputTokens": 19000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 42000, "outputTokens": 16500},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 105000, "outputTokens": 32000},
+        "research": {"model": "gpt-4o", "inputTokens": 88000, "outputTokens": 25000}
+      }
+    },
+    {
+      "date": "2026-02-21",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 30000, "outputTokens": 6000},
+        "leads": {"model": "gpt-4o", "inputTokens": 95000, "outputTokens": 12000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 20000, "outputTokens": 8000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 0, "outputTokens": 0},
+        "research": {"model": "gpt-4o", "inputTokens": 0, "outputTokens": 0}
+      }
+    },
+    {
+      "date": "2026-02-22",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 44000, "outputTokens": 8500},
+        "leads": {"model": "gpt-4o", "inputTokens": 118000, "outputTokens": 15500},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 33000, "outputTokens": 13000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 82000, "outputTokens": 26000},
+        "research": {"model": "gpt-4o", "inputTokens": 65000, "outputTokens": 19000}
+      }
+    },
+    {
+      "date": "2026-02-23",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 36000, "outputTokens": 7000},
+        "leads": {"model": "gpt-4o", "inputTokens": 102000, "outputTokens": 13000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 27000, "outputTokens": 10500},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 68000, "outputTokens": 21000},
+        "research": {"model": "gpt-4o", "inputTokens": 52000, "outputTokens": 15000}
+      }
+    },
+    {
+      "date": "2026-02-24",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 48000, "outputTokens": 10000},
+        "leads": {"model": "gpt-4o", "inputTokens": 125000, "outputTokens": 16500},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 38000, "outputTokens": 15000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 95000, "outputTokens": 30000},
+        "research": {"model": "gpt-4o", "inputTokens": 75000, "outputTokens": 22000}
+      }
+    },
+    {
+      "date": "2026-02-25",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 29000, "outputTokens": 5500},
+        "leads": {"model": "gpt-4o", "inputTokens": 88000, "outputTokens": 11000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 0, "outputTokens": 0},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 50000, "outputTokens": 16000},
+        "research": {"model": "gpt-4o", "inputTokens": 0, "outputTokens": 0}
+      }
+    },
+    {
+      "date": "2026-02-26",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 55000, "outputTokens": 12000},
+        "leads": {"model": "gpt-4o", "inputTokens": 140000, "outputTokens": 18500},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 45000, "outputTokens": 17500},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 110000, "outputTokens": 35000},
+        "research": {"model": "gpt-4o", "inputTokens": 90000, "outputTokens": 26000}
+      }
+    },
+    {
+      "date": "2026-02-27",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 43000, "outputTokens": 9000},
+        "leads": {"model": "gpt-4o", "inputTokens": 115000, "outputTokens": 14500},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 31000, "outputTokens": 12000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 78000, "outputTokens": 24000},
+        "research": {"model": "gpt-4o", "inputTokens": 62000, "outputTokens": 18000}
+      }
+    },
+    {
+      "date": "2026-02-28",
+      "agents": {
+        "main": {"model": "claude-sonnet-4-6", "inputTokens": 45000, "outputTokens": 8000},
+        "leads": {"model": "gpt-4o", "inputTokens": 120000, "outputTokens": 15000},
+        "copy": {"model": "claude-sonnet-4-6", "inputTokens": 30000, "outputTokens": 12000},
+        "coding": {"model": "claude-sonnet-4-6", "inputTokens": 80000, "outputTokens": 25000},
+        "research": {"model": "gpt-4o", "inputTokens": 60000, "outputTokens": 18000}
+      }
+    }
+  ]
+}

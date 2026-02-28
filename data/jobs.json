@@ -1,0 +1,58 @@
+[
+  {
+    "id": "job-001",
+    "name": "Lead Research — Recruiting Agenturen DACH",
+    "agentId": "leads",
+    "description": "Recherchiere 50 B2B Recruiting-Agenturen in DACH. Scrape Impressum-Seiten, extrahiere GF-Name, Email, Telefon. Exportiere als CSV mit Pflichtfeldern: Firma, GF_Vorname, GF_Nachname, Email, Telefon, Website.",
+    "skill": "firecrawl-scraper",
+    "schedule": "daily",
+    "time": "08:00",
+    "active": true,
+    "lastRunAt": "2026-02-27T08:02:11Z",
+    "nextRunAt": "2026-02-28T08:00:00Z",
+    "lastStatus": "done",
+    "createdAt": "2026-02-01T10:00:00Z"
+  },
+  {
+    "id": "job-002",
+    "name": "Outreach Emails — Cold Sequence DACH",
+    "agentId": "copy",
+    "description": "Erstelle 3-teilige Cold-Email-Sequenz für B2B SaaS Outreach. Ton: professionell, direkt, value-first. Subject Lines A/B testen. Zielgruppe: Geschäftsführer von Recruiting-Agenturen.",
+    "skill": "",
+    "schedule": "weekly",
+    "time": "10:00",
+    "active": true,
+    "lastRunAt": "2026-02-24T10:05:33Z",
+    "nextRunAt": "2026-03-03T10:00:00Z",
+    "lastStatus": "done",
+    "createdAt": "2026-02-01T10:30:00Z"
+  },
+  {
+    "id": "job-003",
+    "name": "Market Research — KI-Tools für HR",
+    "agentId": "research",
+    "description": "Analysiere den DACH-Markt für KI-gestützte HR-Tools. Identifiziere Top-10 Wettbewerber, Pricing-Strategien, Positionierungen. Erstelle Markdown-Report mit Executive Summary.",
+    "skill": "web-search",
+    "schedule": "monthly",
+    "time": "09:00",
+    "active": true,
+    "lastRunAt": "2026-01-28T09:01:00Z",
+    "nextRunAt": "2026-03-01T09:00:00Z",
+    "lastStatus": "review-needed",
+    "createdAt": "2026-01-15T08:00:00Z"
+  },
+  {
+    "id": "job-004",
+    "name": "GitHub Repo Audit & Cleanup",
+    "agentId": "coding",
+    "description": "Prüfe alle aktiven Repos in der Dealsky GitHub Org. Identifiziere veraltete Branches, fehlende README-Dateien, offene Issues ohne Assignee. Erstelle kurzen Status-Report.",
+    "skill": "github-api",
+    "schedule": "3x-daily",
+    "time": "07:00",
+    "active": false,
+    "lastRunAt": "2026-02-28T07:00:44Z",
+    "nextRunAt": "2026-02-28T15:00:00Z",
+    "lastStatus": "failed",
+    "createdAt": "2026-02-10T14:00:00Z"
+  }
+]

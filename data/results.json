@@ -1,0 +1,68 @@
+[
+  {
+    "id": "res-001",
+    "agentId": "leads",
+    "jobId": "job-001",
+    "type": "leads-csv",
+    "title": "50 Recruiting-Agenturen DACH — Feb 2026",
+    "content": "Firma,GF_Vorname,GF_Nachname,Anrede,Email,Telefon,Strasse,PLZ,Stadt,Land,Website\nPersonalvermittlung Müller GmbH,Hans,Müller,Herr,h.mueller@pv-mueller.de,+4921112345678,Königsallee 14,40212,Düsseldorf,DE,https://www.pv-mueller.de\nRecruiting Partners AG,Sarah,Weber,Frau,s.weber@recruiting-partners.de,+4969987654321,Mainzer Landstraße 50,60325,Frankfurt,DE,https://www.recruiting-partners.de\nTalent Bridge GmbH,Michael,Schmidt,Herr,m.schmidt@talentbridge.de,+4989123456789,Leopoldstraße 31,80802,München,DE,https://www.talentbridge.de\nHR Solutions Nord GmbH,Anna,Becker,Frau,a.becker@hrsolutions-nord.de,+4940234567890,Jungfernstieg 20,20354,Hamburg,DE,https://www.hrsolutions-nord.de\nExecutive Search Berlin GmbH,Klaus,Hoffmann,Herr,k.hoffmann@esberlin.de,+4930345678901,Unter den Linden 10,10117,Berlin,DE,https://www.esberlin.de",
+    "status": "new",
+    "createdAt": "2026-02-28T08:32:00Z",
+    "feedback": null
+  },
+  {
+    "id": "res-002",
+    "agentId": "copy",
+    "jobId": "job-002",
+    "type": "copy",
+    "title": "Cold Email Sequenz — Recruiting Agenturen DACH",
+    "content": "# Cold Email Sequenz: Recruiting Agenturen DACH\n\n## Email 1 — Erstkonakt (Tag 0)\n**Subject A:** Wie [Firma] 40% mehr qualifizierte Kandidaten findet\n**Subject B:** Kurze Frage zu Ihrem Recruiting-Prozess\n\nHallo {{GF_Vorname}},\n\nich habe gesehen, dass [Firma] aktuell mehrere Positionen besetzt. Der klassische Weg über Jobportale wird teurer und langsamer — das kennen Sie sicher.\n\nWir bei Dealsky haben ein KI-System entwickelt, das Ihren Sourcing-Aufwand um 60% reduziert. Kurzer 15-Min-Call diese Woche?\n\nBeste Grüße,\nChristian\n\n---\n\n## Email 2 — Follow-up (Tag 4)\n**Subject:** Re: Kurze Frage zu Ihrem Recruiting-Prozess\n\nHallo {{GF_Vorname}},\n\nnur kurz nachgehakt — haben Sie meine letzte Nachricht gesehen?\n\nIch zeige Ihnen gerne in 15 Minuten, wie [ähnliche Agentur] mit unserem System letzte Woche 23 qualifizierte Kandidaten sourced hat.\n\nPasst Donnerstag oder Freitag?\n\n---\n\n## Email 3 — Breakup (Tag 10)\n**Subject:** Soll ich die Akte schließen?\n\nHallo {{GF_Vorname}},\n\nich nehme Ihr Schweigen als Signal, dass der Zeitpunkt gerade nicht passt — kein Problem.\n\nFalls sich das ändert: dealsky.io/demo\n\nBleiben Sie erfolgreich,\nChristian",
+    "status": "approved",
+    "createdAt": "2026-02-24T10:18:00Z",
+    "feedback": null
+  },
+  {
+    "id": "res-003",
+    "agentId": "research",
+    "jobId": "job-003",
+    "type": "research",
+    "title": "Market Research: KI-Tools für HR — DACH 2026",
+    "content": "# KI-Tools für HR — DACH Marktanalyse 2026\n\n## Executive Summary\nDer DACH-Markt für KI-gestützte HR-Technologie wächst 2026 mit 34% YoY. Gesamtvolumen: ~€2.1 Mrd. Größte Treiber: Fachkräftemangel, Automatisierungsdruck, EU AI Act Compliance.\n\n## Top Wettbewerber\n\n### 1. Instaffo (DE)\n- Fokus: Matching-Plattform für Tech-Kandidaten\n- Pricing: €299–€999/Monat\n- Stärke: Netzwerk-Effekte, hohe Kandidaten-Qualität\n\n### 2. Phenom People (US, DACH-Präsenz)\n- Fokus: End-to-End Talent Experience\n- Pricing: Enterprise (>€2.000/Monat)\n- Stärke: CRM-Integration, Analytics\n\n### 3. Textkernel (NL)\n- Fokus: CV-Parsing und Matching\n- Pricing: API-basiert (~€0.05/CV)\n- Stärke: Mehrsprachigkeit, DSGVO-konform\n\n## Positionierungsempfehlung\nDealsky sollte sich als **„Autonomous Recruiting Agent"** positionieren — nicht als Tool, sondern als digitaler Recruiting-Mitarbeiter. USP: Keine Einrichtung, sofort einsatzbereit, Pay-per-Hire Modell möglich.\n\n## Nächste Schritte\n1. Competitor-Pricing-Tabelle vervollständigen\n2. Customer Interviews mit 5 Recruiting-Agenturen\n3. Positionierungs-Workshop mit Christian",
+    "status": "changes-requested",
+    "createdAt": "2026-02-20T14:45:00Z",
+    "feedback": "Bitte Pricing-Vergleich als Tabelle formatieren und Textkernel-Abschnitt um konkrete API-Kosten erweitern. Außerdem: Phenom People Marktanteil DACH recherchieren."
+  },
+  {
+    "id": "res-004",
+    "agentId": "coding",
+    "jobId": "job-004",
+    "type": "code",
+    "title": "GitHub Repo Audit Report — Feb 2026",
+    "content": "# GitHub Repo Audit — Dealsky Org\n**Datum:** 28.02.2026 | **Org:** dealskyxassistant\n\n## Zusammenfassung\n- ✅ Aktive Repos: 7\n- ⚠️ Veraltete Branches: 12 (älter als 30 Tage)\n- ❌ Fehlende README: 2 Repos\n- 🔴 Offene Issues ohne Assignee: 8\n\n## Kritische Findings\n\n### jeffrey-hq\n- Branch `feature/old-dashboard` seit 45 Tagen inaktiv → löschen\n- README vorhanden ✅\n- 3 offene Issues ohne Assignee\n\n### dealsky-api\n- Keine README! → sofort erstellen\n- Branch `hotfix/auth-bug` gemerged, aber nicht gelöscht\n- 5 offene Issues ohne Assignee\n\n## Empfehlungen\n1. Branch-Protection-Rules für `main` einrichten\n2. Issue-Templates erstellen\n3. Dependabot für Security-Updates aktivieren",
+    "status": "approved",
+    "createdAt": "2026-02-28T07:05:00Z",
+    "feedback": null
+  },
+  {
+    "id": "res-005",
+    "agentId": "leads",
+    "jobId": "job-001",
+    "type": "leads-csv",
+    "title": "30 IT-Personalvermittler München — Jan 2026",
+    "content": "Firma,GF_Vorname,GF_Nachname,Anrede,Email,Telefon,Strasse,PLZ,Stadt,Land,Website\nIT-Talents GmbH,Florian,Maier,Herr,f.maier@it-talents.de,+4989567891234,Maximilianstraße 5,80539,München,DE,https://www.it-talents.de\nDigital Recruitment Bavaria,Julia,Stein,Frau,j.stein@drb-munich.de,+4989678902345,Sendlinger Straße 42,80331,München,DE,https://www.drb-munich.de",
+    "status": "approved",
+    "createdAt": "2026-01-31T09:20:00Z",
+    "feedback": null
+  },
+  {
+    "id": "res-006",
+    "agentId": "copy",
+    "jobId": "job-002",
+    "type": "copy",
+    "title": "LinkedIn DM Sequenz — Recruiting Manager",
+    "content": "# LinkedIn DM Sequenz\n\n## DM 1 — Connection Request Note\nHallo {{Vorname}}, ich vernetze mich gerne mit Recruiting-Profis. Arbeite gerade an einem spannenden Projekt im HR-Tech-Bereich. Freue mich auf den Austausch!\n\n## DM 2 — Nach Accept (Tag 1)\nDanke fürs Vernetzen, {{Vorname}}! Kurze Frage: Wie viel Zeit verbringt Ihr Team aktuell mit manuellem Sourcing pro Woche? Frage für ein internes Research-Projekt. 🙏\n\n## DM 3 — Follow-up (Tag 3)\nFalls Sie neugierig sind, was ich entwickle: Ein KI-Agent, der Sourcing automatisiert. Würde gerne 15 Min Ihr Feedback einholen — Interesse?",
+    "status": "new",
+    "createdAt": "2026-02-28T06:00:00Z",
+    "feedback": null
+  }
+]
