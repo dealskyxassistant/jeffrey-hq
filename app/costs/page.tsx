@@ -1,16 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Nav from "@/components/Nav";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+
+const CostChart = dynamic(() => import("@/components/CostChart"), { ssr: false });
 
 interface AgentTableRow {
   agentId: string;
@@ -74,31 +68,21 @@ function StatCard({
   color: string;
 }) {
   const colors: Record<string, string> = {
-    indigo: "text-indigo-400",
-    green: "text-green-400",
-    yellow: "text-yellow-400",
+    indigo: "text-indigo-600 dark:text-indigo-400",
+    green: "text-green-600 dark:text-green-400",
+    yellow: "text-yellow-600 dark:text-yellow-400",
   };
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-      <div className={`text-3xl font-bold ${colors[color] ?? "text-white"}`}>{value}</div>
-      <div className="text-sm text-gray-400 mt-1 font-medium">{label}</div>
-      {sub && <div className="text-xs text-gray-600 mt-0.5">{sub}</div>}
+    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-sm dark:shadow-none">
+      <div className={`text-3xl font-bold ${colors[color] ?? "text-gray-900 dark:text-white"}`}>
+        {value}
+      </div>
+      <div className="text-sm text-gray-700 dark:text-gray-400 mt-1 font-medium">{label}</div>
+      {sub && <div className="text-xs text-gray-400 dark:text-gray-600 mt-0.5">{sub}</div>}
     </div>
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function CustomTooltip({ active, payload, label }: any) {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm">
-        <p className="text-gray-400">{label}</p>
-        <p className="text-indigo-400 font-bold">{formatEUR(payload[0].value as number)}</p>
-      </div>
-    );
-  }
-  return null;
-}
 
 export default function CostsPage() {
   const [data, setData] = useState<CostData | null>(null);
@@ -115,27 +99,31 @@ export default function CostsPage() {
       .catch(console.error);
   }, []);
 
-  // Format chart dates nicely
   const chartData =
     data?.chartData.map((d) => ({
       ...d,
-      label: new Date(d.date).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" }),
+      label: new Date(d.date).toLocaleDateString("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+      }),
     })) ?? [];
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-200">
       <Nav />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
             Token & Kosten <span className="text-indigo-500">💰</span>
           </h1>
-          <p className="text-gray-400 text-sm mt-1">API Usage Tracker · Alle Preise in EUR</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+            API Usage Tracker · Alle Preise in EUR
+          </p>
         </div>
 
         {loading || !data ? (
-          <div className="text-center py-16 text-gray-500">
+          <div className="text-center py-16 text-gray-400 dark:text-gray-500">
             <div className="text-4xl mb-3">💰</div>
             <p>Lade Kostendaten...</p>
           </div>
@@ -164,84 +152,72 @@ export default function CostsPage() {
             </div>
 
             {/* Chart */}
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-8">
-              <h2 className="text-sm font-semibold text-gray-300 mb-4">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 mb-8 shadow-sm dark:shadow-none">
+              <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
                 Tageskosten — letzte 14 Tage
               </h2>
-              <ResponsiveContainer width="100%" height={200}>
-                <LineChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-                  <XAxis
-                    dataKey="label"
-                    tick={{ fill: "#6b7280", fontSize: 11 }}
-                    axisLine={{ stroke: "#374151" }}
-                    tickLine={false}
-                  />
-                  <YAxis
-                    tick={{ fill: "#6b7280", fontSize: 11 }}
-                    axisLine={false}
-                    tickLine={false}
-                    tickFormatter={(v: number) => `€${v}`}
-                    width={45}
-                  />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Line
-                    type="monotone"
-                    dataKey="costEUR"
-                    stroke="#6366f1"
-                    strokeWidth={2}
-                    dot={{ fill: "#6366f1", r: 3 }}
-                    activeDot={{ r: 5, fill: "#818cf8" }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+              <CostChart data={chartData} />
             </div>
 
             {/* Agent Table */}
-            <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden mb-6">
-              <div className="px-5 py-4 border-b border-gray-800">
-                <h2 className="text-sm font-semibold text-gray-300">Kosten pro Agent</h2>
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden mb-6 shadow-sm dark:shadow-none">
+              <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800">
+                <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Kosten pro Agent
+                </h2>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-gray-800">
-                      {["Agent", "Modell", "Input Tokens", "Output Tokens", "Tokens gesamt", "Kosten heute", "Kosten Monat"].map(
-                        (h) => (
-                          <th
-                            key={h}
-                            className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3 whitespace-nowrap"
-                          >
-                            {h}
-                          </th>
-                        )
-                      )}
+                    <tr className="border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-transparent">
+                      {[
+                        "Agent",
+                        "Modell",
+                        "Input Tokens",
+                        "Output Tokens",
+                        "Tokens gesamt",
+                        "Kosten heute",
+                        "Kosten Monat",
+                      ].map((h) => (
+                        <th
+                          key={h}
+                          className="text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider px-4 py-3 whitespace-nowrap"
+                        >
+                          {h}
+                        </th>
+                      ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-800">
+                  <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                     {data.agentTable.map((row) => {
-                      const agent = AGENT_META[row.agentId] ?? { name: row.agentId, emoji: "🤖" };
+                      const agent = AGENT_META[row.agentId] ?? {
+                        name: row.agentId,
+                        emoji: "🤖",
+                      };
                       return (
-                        <tr key={row.agentId} className="hover:bg-gray-800/40 transition-colors">
-                          <td className="px-4 py-3 text-white font-medium whitespace-nowrap">
+                        <tr
+                          key={row.agentId}
+                          className="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
+                        >
+                          <td className="px-4 py-3 text-gray-900 dark:text-white font-medium whitespace-nowrap">
                             {agent.emoji} {agent.name}
                           </td>
-                          <td className="px-4 py-3 text-gray-400 whitespace-nowrap">
+                          <td className="px-4 py-3 text-gray-500 dark:text-gray-400 whitespace-nowrap">
                             {MODEL_NAMES[row.model] ?? row.model}
                           </td>
-                          <td className="px-4 py-3 text-gray-300 whitespace-nowrap">
+                          <td className="px-4 py-3 text-gray-700 dark:text-gray-300 whitespace-nowrap">
                             {formatNum(row.todayInput)}
                           </td>
-                          <td className="px-4 py-3 text-gray-300 whitespace-nowrap">
+                          <td className="px-4 py-3 text-gray-700 dark:text-gray-300 whitespace-nowrap">
                             {formatNum(row.todayOutput)}
                           </td>
-                          <td className="px-4 py-3 text-gray-300 whitespace-nowrap">
+                          <td className="px-4 py-3 text-gray-700 dark:text-gray-300 whitespace-nowrap">
                             {formatNum(row.todayTotal)}
                           </td>
-                          <td className="px-4 py-3 text-green-400 font-medium whitespace-nowrap">
+                          <td className="px-4 py-3 text-green-600 dark:text-green-400 font-medium whitespace-nowrap">
                             {formatEUR(row.todayCostEUR)}
                           </td>
-                          <td className="px-4 py-3 text-yellow-400 font-medium whitespace-nowrap">
+                          <td className="px-4 py-3 text-yellow-600 dark:text-yellow-400 font-medium whitespace-nowrap">
                             {formatEUR(row.monthCostEUR)}
                           </td>
                         </tr>
@@ -253,49 +229,60 @@ export default function CostsPage() {
             </div>
 
             {/* Collapsible Price Table */}
-            <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm dark:shadow-none">
               <button
                 onClick={() => setPricesOpen(!pricesOpen)}
-                className="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-800/50 transition-colors"
+                className="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
               >
-                <h2 className="text-sm font-semibold text-gray-300">
+                <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                   💡 Modell-Preistabelle (Stand Feb 2026)
                 </h2>
-                <span className="text-gray-500 text-lg">{pricesOpen ? "▲" : "▼"}</span>
+                <span className="text-gray-400 dark:text-gray-500 text-lg">
+                  {pricesOpen ? "▲" : "▼"}
+                </span>
               </button>
               {pricesOpen && (
-                <div className="border-t border-gray-800 overflow-x-auto">
+                <div className="border-t border-gray-100 dark:border-gray-800 overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b border-gray-800 bg-gray-800/30">
-                        <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-5 py-3">
+                      <tr className="border-b border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30">
+                        <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider px-5 py-3">
                           Modell
                         </th>
-                        <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-5 py-3">
+                        <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider px-5 py-3">
                           Input ($/1M Tokens)
                         </th>
-                        <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-5 py-3">
+                        <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider px-5 py-3">
                           Output ($/1M Tokens)
                         </th>
-                        <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-5 py-3">
+                        <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-500 uppercase tracking-wider px-5 py-3">
                           EUR-Faktor
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-800">
+                    <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                       {Object.entries(data.modelPrices).map(([model, prices]) => (
-                        <tr key={model} className="hover:bg-gray-800/40">
-                          <td className="px-5 py-3 text-white font-medium">
+                        <tr
+                          key={model}
+                          className="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors"
+                        >
+                          <td className="px-5 py-3 text-gray-900 dark:text-white font-medium">
                             {MODEL_NAMES[model] ?? model}
                           </td>
-                          <td className="px-5 py-3 text-gray-300">${prices.input.toFixed(2)}</td>
-                          <td className="px-5 py-3 text-gray-300">${prices.output.toFixed(2)}</td>
-                          <td className="px-5 py-3 text-gray-400">{data.usdToEur}</td>
+                          <td className="px-5 py-3 text-gray-700 dark:text-gray-300">
+                            ${prices.input.toFixed(2)}
+                          </td>
+                          <td className="px-5 py-3 text-gray-700 dark:text-gray-300">
+                            ${prices.output.toFixed(2)}
+                          </td>
+                          <td className="px-5 py-3 text-gray-500 dark:text-gray-400">
+                            {data.usdToEur}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                  <p className="text-xs text-gray-600 px-5 py-3">
+                  <p className="text-xs text-gray-400 dark:text-gray-600 px-5 py-3">
                     USD→EUR Faktor: {data.usdToEur} (hardcoded, konfigurierbar in Settings)
                   </p>
                 </div>
