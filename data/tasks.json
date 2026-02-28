@@ -1,0 +1,64 @@
+{
+  "scheduled": [
+    {
+      "id": "1",
+      "title": "Lead Batch: Steuerberater München (100 Leads)",
+      "agent": "Leads",
+      "description": "Impressum-Scraping für Steuerberater im Raum München. Ziel: 100 qualifizierte Leads mit E-Mail + Telefon.",
+      "createdAt": "2024-02-28T08:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "title": "Follow-up Sequenz: Woche 2 Outreach",
+      "agent": "Copy",
+      "description": "3-teilige Follow-up Sequenz für den zweiten Outreach-Zyklus. Fokus: Mehrwert-Demonstration.",
+      "createdAt": "2024-02-28T09:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "title": "Competitor Analysis: Apollo.io vs Clay",
+      "agent": "Research",
+      "description": "Detaillierte Feature- und Preisvergleich zwischen Apollo.io und Clay.com für Lead Research.",
+      "createdAt": "2024-02-28T10:00:00.000Z"
+    }
+  ],
+  "running": [
+    {
+      "id": "4",
+      "title": "Jeffrey HQ Dashboard Entwicklung",
+      "agent": "Coding",
+      "description": "Mission Control Dashboard für das Dealsky Agent Netzwerk. Next.js 14 + Tailwind CSS.",
+      "createdAt": "2024-02-28T07:30:00.000Z"
+    },
+    {
+      "id": "5",
+      "title": "Cold Email Template: SaaS-Angle",
+      "agent": "Copy",
+      "description": "Neues Cold-Email-Template mit SaaS-spezifischem Winkel. 3 A/B-Varianten für Subject Lines.",
+      "createdAt": "2024-02-28T08:45:00.000Z"
+    }
+  ],
+  "done": [
+    {
+      "id": "6",
+      "title": "Lead CSV: Anwaltskanzleien Hamburg",
+      "agent": "Leads",
+      "description": "75 qualifizierte Leads aus Hamburg exportiert. Vollständig normalisiert und validiert.",
+      "createdAt": "2024-02-27T14:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "title": "Market Research: KMU Digitalisierung 2024",
+      "agent": "Research",
+      "description": "Marktreport zur Digitalisierung von KMUs in DACH. 12 Seiten, inklusive Handlungsempfehlungen.",
+      "createdAt": "2024-02-27T11:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "title": "GitHub Repo Setup: dealsky-leads-scraper",
+      "agent": "Coding",
+      "description": "Repository in dealskyxassistant Organisation erstellt. CI/CD via GitHub Actions konfiguriert.",
+      "createdAt": "2024-02-26T16:00:00.000Z"
+    }
+  ]
+}
