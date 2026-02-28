@@ -285,7 +285,7 @@ export default function DashboardPage() {
         {/* Header */}
         <div className="mb-8 flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
+            <h1 className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-1">
               Mission Control <span className="text-indigo-500">↗</span>
             </h1>
             <p className="text-gray-500 dark:text-gray-400 text-sm">

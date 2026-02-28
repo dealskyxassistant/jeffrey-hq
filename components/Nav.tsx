@@ -67,7 +67,7 @@ export default function Nav() {
           </Link>
 
           {/* Nav Links */}
-          <div className="flex items-center gap-0.5 overflow-x-auto">
+          <div className="flex items-center gap-0.5 overflow-x-auto flex-1 mx-2 min-w-0" style={{scrollbarWidth: "none"}}>
             {navItems.map((item) => {
               const active = pathname === item.href;
               return (
@@ -90,14 +90,13 @@ export default function Nav() {
                 </Link>
               );
             })}
-          </div>
-
             {/* Analytics - Soon */}
             <span className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-400 dark:text-gray-600 cursor-not-allowed whitespace-nowrap">
               <span className="text-xs">📊</span>
               <span className="hidden sm:block">Analytics</span>
               <span className="hidden sm:block text-[9px] bg-indigo-100 dark:bg-indigo-900/40 text-indigo-500 dark:text-indigo-400 px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wide">Soon</span>
             </span>
+          </div>
           {/* Right: Theme Toggle + Logout */}
           <div className="flex items-center gap-1 flex-shrink-0">
             <button

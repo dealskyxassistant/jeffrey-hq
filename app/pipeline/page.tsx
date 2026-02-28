@@ -113,7 +113,7 @@ export default function PipelinePage() {
         {/* Header */}
         <div className="mb-8 flex items-start justify-between flex-wrap gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Lead Pipeline</h1>
+            <h1 className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-1">Lead Pipeline</h1>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               Alle Leads aus dem Recherche-Agent
               {data?.stats.lastSent && (
@@ -158,7 +158,7 @@ export default function PipelinePage() {
         {data?.funnel && (
           <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 mb-8 shadow-sm dark:shadow-none">
             <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Lead Funnel</h2>
-            <div className="flex items-end gap-2 flex-wrap">
+            <div className="grid grid-cols-5 sm:flex sm:items-end gap-2 sm:flex-wrap">
               {[
                 { label: "Eingang", value: data.funnel.eingang, color: "bg-indigo-500", pct: 100 },
                 { label: "Bereinigt", value: data.funnel.bereinigt, color: "bg-purple-500", pct: Math.round((data.funnel.bereinigt / data.funnel.eingang) * 100) },

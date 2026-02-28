@@ -60,10 +60,10 @@ export default function LeadsPage() {
         <div className="space-y-4">
           {batches.map((batch) => (
             <div key={batch.id} className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
-              <div className="p-4 flex items-center justify-between">
-                <div>
-                  <div className="font-semibold text-gray-900 dark:text-white">{batch.filename}</div>
-                  <div className="text-sm text-gray-500 mt-0.5">
+              <div className="p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white truncate">{batch.filename}</div>
+                  <div className="text-xs sm:text-sm text-gray-500 mt-0.5">
                     {new Date(batch.date).toLocaleString("de-DE")} &nbsp;·&nbsp;
                     <span className="text-green-600 font-medium">{batch.approvedLeads} approved</span>
                     {batch.rejectedLeads > 0 && (
@@ -72,16 +72,16 @@ export default function LeadsPage() {
                     <span className="text-gray-400 ml-2">/ {batch.totalLeads} gesamt</span>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2 flex-shrink-0">
                   <button
                     onClick={() => setExpanded(expanded === batch.id ? null : batch.id)}
-                    className="px-3 py-1.5 text-sm border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300"
+                    className="px-3 py-1.5 text-sm border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 text-center"
                   >
                     {expanded === batch.id ? "↑ QA Report" : "↓ QA Report"}
                   </button>
                   <button
                     onClick={() => downloadCSV(batch)}
-                    className="px-3 py-1.5 text-sm bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium"
+                    className="px-3 py-1.5 text-sm bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium text-center"
                   >
                     ⬇ CSV
                   </button>
