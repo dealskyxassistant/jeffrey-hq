@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFile, writeFile } from "fs/promises";
-import path from "path";
 import { randomUUID } from "crypto";
-
-const DATA_PATH = path.join(process.cwd(), "data", "jobs.json");
+import { getDataPath } from "@/lib/dataPath";
 
 export interface Job {
   id: string;
@@ -21,29 +19,29 @@ export interface Job {
 }
 
 async function readJobs(): Promise<Job[]> {
-  const raw = await readFile(DATA_PATH, "utf-8");
-  return JSON.parse(raw) as Job[];
+  try {
+    const p = await getDataPath("jobs.json");
+    const raw = await readFile(p, "utf-8");
+    return JSON.parse(raw) as Job[];
+  } catch {
+    return [];
+  }
 }
 
 async function writeJobs(jobs: Job[]): Promise<void> {
-  await writeFile(DATA_PATH, JSON.stringify(jobs, null, 2), "utf-8");
+  const p = await getDataPath("jobs.json");
+  await writeFile(p, JSON.stringify(jobs, null, 2), "utf-8");
 }
 
 export async function GET() {
-  try {
-    const jobs = await readJobs();
-    return NextResponse.json(jobs);
-  } catch (err) {
-    console.error("GET /api/jobs error:", err);
-    return NextResponse.json({ error: "Failed to read jobs" }, { status: 500 });
-  }
+  const jobs = await readJobs();
+  return NextResponse.json(jobs);
 }
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json() as Partial<Job>;
     const jobs = await readJobs();
-
     const newJob: Job = {
       id: randomUUID(),
       name: body.name ?? "Neuer Job",
@@ -58,10 +56,8 @@ export async function POST(req: NextRequest) {
       lastStatus: "scheduled",
       createdAt: new Date().toISOString(),
     };
-
     jobs.push(newJob);
     await writeJobs(jobs);
-
     return NextResponse.json(newJob, { status: 201 });
   } catch (err) {
     console.error("POST /api/jobs error:", err);

@@ -91,13 +91,13 @@ const agents = [
 
 export default function AgentsPage() {
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-200">
       <Nav />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-1">Agent Network</h1>
-          <p className="text-gray-400 text-sm">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Agent Network</h1>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
             {agents.filter((a) => a.status === "active").length} aktiv ·{" "}
             {agents.filter((a) => a.status === "idle").length} idle · {agents.length} gesamt
           </p>
@@ -111,16 +111,16 @@ export default function AgentsPage() {
         </div>
 
         {/* Model Info */}
-        <div className="mt-10 bg-gray-900 border border-gray-800 rounded-xl p-6">
-          <h3 className="text-sm font-semibold text-gray-300 mb-4 uppercase tracking-wider">
+        <div className="mt-10 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6">
+          <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4 uppercase tracking-wider">
             Modell-Übersicht
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex items-start gap-3">
               <div className="w-2 h-2 mt-1.5 rounded-full bg-purple-400 shrink-0" />
               <div>
-                <div className="text-sm font-medium text-white">Claude Sonnet</div>
-                <div className="text-xs text-gray-500 mt-0.5">
+                <div className="text-sm font-medium text-gray-900 dark:text-white">Claude Sonnet</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500 mt-0.5">
                   Jeffrey, Copy, Coding — Anthropic · Stärken: Reasoning, Coding, Langtext
                 </div>
               </div>
@@ -128,8 +128,8 @@ export default function AgentsPage() {
             <div className="flex items-start gap-3">
               <div className="w-2 h-2 mt-1.5 rounded-full bg-green-400 shrink-0" />
               <div>
-                <div className="text-sm font-medium text-white">GPT-4o</div>
-                <div className="text-xs text-gray-500 mt-0.5">
+                <div className="text-sm font-medium text-gray-900 dark:text-white">GPT-4o</div>
+                <div className="text-xs text-gray-500 dark:text-gray-500 mt-0.5">
                   Leads, Research — OpenAI · Stärken: Web Search, Datenanalyse, Struktur
                 </div>
               </div>

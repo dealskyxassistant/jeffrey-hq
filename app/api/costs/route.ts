@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { readFile } from "fs/promises";
-import path from "path";
 
-const DATA_PATH = path.join(process.cwd(), "data", "usage.json");
+
+import { getDataPath } from "@/lib/dataPath";
 
 const MODEL_PRICES: Record<string, { input: number; output: number }> = {
   "claude-sonnet-4-6": { input: 3.0, output: 15.0 },
@@ -34,7 +34,7 @@ function calcCostUSD(model: string, inputTokens: number, outputTokens: number): 
 
 export async function GET() {
   try {
-    const raw = await readFile(DATA_PATH, "utf-8");
+    const raw = await readFile(await getDataPath("usage.json"), "utf-8");
     const data = JSON.parse(raw) as UsageData;
     const today = new Date().toISOString().slice(0, 10);
     const currentMonth = today.slice(0, 7); // YYYY-MM
