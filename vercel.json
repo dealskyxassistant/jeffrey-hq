@@ -3,10 +3,6 @@
   "buildCommand": "next build",
   "devCommand": "next dev",
   "installCommand": "npm install",
-  "env": {
-    "HQ_PASSWORD": "@hq_password",
-    "SESSION_SECRET": "@session_secret"
-  },
   "headers": [
     {
       "source": "/(.*)",
