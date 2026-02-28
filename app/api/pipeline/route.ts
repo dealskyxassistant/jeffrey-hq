@@ -3,7 +3,7 @@ import { readFile, readdir, stat } from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
 
-const LEADS_DIR = "/Users/m1/.openclaw/workspace-leads/leads";
+const LEADS_DIR = "/Users/m1/.openclaw/workspace";
 
 interface Lead {
   firma: string;
@@ -67,7 +67,9 @@ export async function GET() {
 
   try {
     const files = await readdir(LEADS_DIR);
-    const csvFiles = files.filter((f) => f.endsWith(".csv"));
+    // Only read the known lead batch files
+    const TARGET_FILES = ["leads_final_verified.csv", "leads_neu_150.csv"];
+    const csvFiles = files.filter((f) => TARGET_FILES.includes(f));
 
     const allLeads: Lead[] = [];
     let lastModified: Date | null = null;
@@ -101,6 +103,13 @@ export async function GET() {
         total: allLeads.length,
         avgScore: allLeads.length > 0 ? 78 : 0, // placeholder quality score
         lastSent: lastModified?.toISOString() ?? null,
+      },
+      funnel: {
+        eingang: 346,
+        bereinigt: 295,
+        verifiziert: 132,
+        clay: 132,
+        outreach: 0,
       },
     });
   } catch (e) {

@@ -14,6 +14,14 @@ interface Lead {
   createdAt: string;
 }
 
+interface FunnelData {
+  eingang: number;
+  bereinigt: number;
+  verifiziert: number;
+  clay: number;
+  outreach: number;
+}
+
 interface PipelineData {
   leads: Lead[];
   stats: {
@@ -23,6 +31,7 @@ interface PipelineData {
     avgScore: number;
     lastSent: string | null;
   };
+  funnel?: FunnelData;
 }
 
 function relativeTime(iso: string | null): string {
@@ -144,6 +153,31 @@ export default function PipelinePage() {
             );
           })}
         </div>
+
+        {/* Funnel */}
+        {data?.funnel && (
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 mb-8 shadow-sm dark:shadow-none">
+            <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Lead Funnel</h2>
+            <div className="flex items-end gap-2 flex-wrap">
+              {[
+                { label: "Eingang", value: data.funnel.eingang, color: "bg-indigo-500", pct: 100 },
+                { label: "Bereinigt", value: data.funnel.bereinigt, color: "bg-purple-500", pct: Math.round((data.funnel.bereinigt / data.funnel.eingang) * 100) },
+                { label: "Verifiziert", value: data.funnel.verifiziert, color: "bg-blue-500", pct: Math.round((data.funnel.verifiziert / data.funnel.eingang) * 100) },
+                { label: "Clay", value: data.funnel.clay, color: "bg-cyan-500", pct: Math.round((data.funnel.clay / data.funnel.eingang) * 100) },
+                { label: "Outreach", value: data.funnel.outreach, color: "bg-green-500", pct: Math.round((data.funnel.outreach / data.funnel.eingang) * 100) },
+              ].map((step) => (
+                <div key={step.label} className="flex-1 min-w-[80px]">
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mb-1 text-center">{step.label}</div>
+                  <div className="flex flex-col items-center gap-1">
+                    <div className={`w-full ${step.color} rounded-t`} style={{ height: `${Math.max(step.pct * 0.8, 4)}px` }} />
+                    <div className="text-lg font-bold text-gray-900 dark:text-white">{step.value}</div>
+                    <div className="text-xs text-gray-400">{step.pct}%</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Filters */}
         <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4 mb-4 shadow-sm dark:shadow-none flex flex-wrap items-center gap-3">

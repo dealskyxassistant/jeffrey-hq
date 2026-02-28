@@ -6,7 +6,7 @@ const SECRET = new TextEncoder().encode(
   process.env.SESSION_SECRET || "change-me-in-production-min-32-chars!!"
 );
 
-const PUBLIC_PATHS = ["/login", "/api/auth"];
+const PUBLIC_PATHS = ["/login", "/api/auth", "/api/leads"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
